@@ -1,0 +1,150 @@
+In Html first
+
+*Create Function And Construct Your variable Then use Windows.location.href Ex:
+*Then Passing Your Function Name in Your <a> Tag
+
+
+function subscribeFooter() {
+    
+var email = document.getElementById('FooterEmail').value;
+
+var radioValue = document.querySelector('input[name="languages"]:checked').value;
+
+window.location.href = "https://menafn.com/nl_sub.aspx?email=" + email +'&lang=' + radioValue;
+ }
+
+-----
+
+In React js 
+
+1-Contsruct Your Variable then contruct your onchangeMETHOD
+  
+ const [English, setEnglish] = useState("En");
+           const onChangeEnglish = (ev) => {
+             //save your value here with state variable
+             console.log("Daily English :",ev.target.value);
+             setEnglish(ev.target.value);
+           };
+         
+       
+           const [Arabic, setArabic] = useState("Ar");
+           const onChangeArabic = (ev) => {
+             //save your value here with state variable
+             console.log("Daily Arabic :",ev.target.value);
+          
+             setArabic(ev.target.value);
+
+             console.log(Arabic);
+             
+           };
+         
+       
+           const [AllLang, setAllLang] = useState("All");
+           const onChangeAllLang = (ev) => {
+             //save your value here with state variable
+             console.log("AllLang is:",ev.target.value);
+             setAllLang(ev.target.value);
+           };
+         
+           const [Email, setEmail] = useState(0);
+           const onChangeEmail = (ev) => {
+             //save your value here with state variable
+             console.log("User Email is : ",ev.target.value);
+             setEmail(ev.target.value);
+           };
+
+
+----
+******
+THEN Write Your Condition 
+
+
+// Part of Subscribe
+           
+const [selectedLang, setSelectedLang] = useState('');
+const [Lang, setLang] = useState('En');
+
+// Update selectedLang when a radio button is clicked
+const handleRadioChange = (event) => {
+  setSelectedLang(event.target.value);
+
+  // Set additionalString based on the selected language
+  if (event.target.value === 'En') {
+    setLang('En');
+  } else if (event.target.value === 'Ar') {
+    setLang('Ar');
+  }
+  else if (event.target.value === 'All') {
+    setLang('All');
+  }
+  else {
+    setLang('...');
+  }
+};
+
+----
+***** Then this is example in return what we write 
+
+
+    <div className="col-sm-3 classnewsletter1">
+             <div id="RColNewslatter" className="newedge-newsletter classnewletterwidth"  >
+               {/* newedge-newsletter */}
+               <div className="introtext">
+                 <h2 className="title">
+                   Newsletter</h2>
+                 <p className="footer-info">
+                 </p><div className="radio">
+                   <label>
+                     <input  
+                     
+                          type="radio"
+                          value="En"
+                          checked={selectedLang === 'En'}
+                          onChange={handleRadioChange}
+                     />
+                     Daily(English)
+                   </label>
+                 </div>
+
+             
+
+
+                 <div className="radio">
+                   <label>
+                     <input 
+                      
+                      type="radio"
+                      value="Ar"
+                      checked={selectedLang === 'Ar'}
+                      onChange={handleRadioChange}
+                        
+                     />
+                     Daily(Arabic)
+                   </label>
+                 </div>
+                 <div className="radio">
+                   <label>
+                     <input  
+                     
+                     type="radio"
+                     value="All"
+                     checked={selectedLang === 'All'}
+                     onChange={handleRadioChange}
+                       />
+                     All()
+                   </label>
+                 </div>
+                 <p />
+               </div>
+               <div className="form">
+                 <input   onChange={onChangeEmail}   name="ctl00$ContentPlaceHolder1$txt_news_letter" type="text" id="ContentPlaceHolder1_txt_news_letter" placeholder="E-mail" className="form-control"   />
+                 <br />
+               
+                    
+                 <a    href={'https://menafn.com/nl_sub.aspx?email='+Email+'&lang='+Lang} name="ctl00$ContentPlaceHolder1$btn_newsletter"   id="ContentPlaceHolder1_btn_newsletter" className="btn SubscribeBody" >Subscribe</a>
+               
+               
+               </div>
+
+
+
